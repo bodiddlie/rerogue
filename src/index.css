@@ -1,5 +1,6 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: "Roboto Mono", "Source Code Pro", "Lucida Console", "Monaco", monospace;
+  font-size: 1.5rem;
 }
