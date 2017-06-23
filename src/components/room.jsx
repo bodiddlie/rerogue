@@ -4,10 +4,10 @@ import styled from 'styled-components';
 
 const Room = ({ room }) =>
   <Grid>
-    {room.map((row, i) =>
-      <Row key={i}>
-        {row.map((cell, i) => <Cell key={i} type={cell.type} />)}
-      </Row>
+    {room.map((row, y) =>
+      <g key={y}>
+        {row.map((cell, x) => <Cell key={`${x}-${y}`} x={x * 32} y={y * 32} type={cell.type} />)}
+      </g>
     )}
   </Grid>;
 
@@ -21,22 +21,18 @@ export default connect(mapStateToProps)(Room);
 
 //STYLED COMPONENTS
 
-const Grid = styled.div`
-  display: flex;
-  flex-direction: column;
+const Grid = styled.svg`
   width: 640px;
   height: 640px;
+  border: 2px solid black;
 `;
 
-const Row = styled.div`
-  display: flex;
-  width: 100%;
-`;
-
-const Cell = styled.div`
+const Cell = styled.rect`
   width: 32px;
   height: 32px;
-  background-color: ${props => getBackgroundColor(props.type)};
+  fill: ${props => getBackgroundColor(props.type)};
+  stroke: black;
+  stroke-width: 2px;
 `;
 
 function getBackgroundColor(cellType) {
