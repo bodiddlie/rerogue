@@ -1,4 +1,4 @@
-import reducer, { initialState, moveUp, moveDown } from '../player';
+import reducer, { initialState, movePlayer } from '../player';
 
 describe('Player Reducer', () => {
   it('starts in an initial state', () => {
@@ -7,12 +7,22 @@ describe('Player Reducer', () => {
   });
 
   it('can move the player up', () => {
-    const result = reducer(initialState, moveUp());
+    const result = reducer(initialState, movePlayer(0, -1));
     expect(result.y).toBe(initialState.y - 1);
   });
 
   it('can move the player down', () => {
-    const result = reducer(initialState, moveDown());
+    const result = reducer(initialState, movePlayer(0, 1));
     expect(result.y).toBe(initialState.y + 1);
+  });
+
+  it('can move the player left', () => {
+    const result = reducer(initialState, movePlayer(-1, 0));
+    expect(result.x).toBe(initialState.x - 1);
+  });
+
+  it('can move the player right', () => {
+    const result = reducer(initialState, movePlayer(1, 0));
+    expect(result.x).toBe(initialState.x + 1);
   });
 });

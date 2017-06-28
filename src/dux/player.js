@@ -5,11 +5,10 @@ export const initialState = {
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
-    case MOVE_UP: {
-      return { ...state, y: state.y - 1 };
-    }
-    case MOVE_DOWN: {
-      return { ...state, y: state.y + 1 };
+    case MOVE_PLAYER: {
+      const x = state.x + action.dx;
+      const y = state.y + action.dy;
+      return { ...state, x, y };
     }
     default: {
       return state;
@@ -18,13 +17,8 @@ export default function reducer(state = initialState, action) {
 }
 
 //ACTIONS
-const MOVE_UP = '[Player] Move Up';
-const MOVE_DOWN = '[Player] Move Down';
+const MOVE_PLAYER = '[Player] Move Player';
 
-export function moveUp() {
-  return { type: MOVE_UP };
-}
-
-export function moveDown() {
-  return { type: MOVE_DOWN };
+export function movePlayer(dx, dy) {
+  return { type: MOVE_PLAYER, dx, dy };
 }
