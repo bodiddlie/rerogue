@@ -3,7 +3,7 @@ import { getRandomInt } from './util';
 const WIDTH = 20;
 const HEIGHT = 20;
 
-export const initialState = Array(HEIGHT).fill(Array(WIDTH).fill({ type: 'ground' }));
+export const initialState = buildEmptyRoom();
 
 function reducer(state = initialState, action) {
   switch (action.type) {
