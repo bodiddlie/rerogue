@@ -10,7 +10,7 @@ const Room = ({ room, player }) =>
       </g>
     )}
     <g>
-      <circle cx={player.x * 32 + 16} cy={player.y * 32 + 16} r="12" stroke="green" fill="blue" />
+      <circle cx={player.x * 32 + 16} cy={player.y * 32 + 16} r="12" strokeWidth="4" stroke="green" fill="blue" />
     </g>
   </Grid>;
 
